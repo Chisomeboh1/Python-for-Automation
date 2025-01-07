@@ -34,3 +34,18 @@ The scope of this vulnerability assessment relates to the current access control
 - <b>Purpose</b>
 
 The database server is a centralized computer system that stores and manages large amounts of data. The server is used to store customer, campaign, and analytic data that can later be analyzed to track performance and personalize marketing efforts. It is critical to secure the system because of its regular use for marketing operations.
+
+- <b>Risk Assessment</b>
+
+<img src="https://imgur.com/SJHK0cI.png" height="80%" width="80%" alt="Threat And Vulnerability Assessments"/>
+
+
+
+- <b>Approach</b>
+
+Risks that were measured considered the data storage and management procedures of the business. Potential threat sources and events were determined using the likelihood of a security incident given the open access permissions of the information system. The severity of potential incidents were weighed against the impact on day-to-day operational needs.
+
+- <b>Remediation Strategy</b>
+
+Implementation of authentication, authorization, and auditing mechanisms to ensure that only authorized users access the database server. This includes using strong passwords, role-based access controls, and multi-factor authentication to limit user privileges. Encryption of data in motion using TLS instead of SSL. IP allow-listing to corporate offices to prevent random users from the internet from connecting to the database.
+
