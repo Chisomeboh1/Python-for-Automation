@@ -6,3 +6,19 @@ At my organization, access to restricted content is controlled with an allow lis
 
 <br />
 
+
+
+
+<h2> Utilities Used</h2>
+ 
+- <b>Google Cloud Quick Labs</b>
+
+
+<h2>Environment Used </h2>
+
+- <b>Windows 10</b> (21H2) 
+
+<h2>Program walk-through:</h2>
+- <b>Vulnerability Assessment Report</b>
+   
+     1st  January, 20XX
