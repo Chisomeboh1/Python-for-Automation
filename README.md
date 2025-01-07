@@ -19,33 +19,87 @@ At my organization, access to restricted content is controlled with an allow lis
 - <b>Windows 10</b> (21H2) 
 
 <h2>Program walk-through:</h2>
-- <b>Vulnerability Assessment Report</b>
+- <b>Update a file through a Python algorithm</b>
    
-     1st  January, 20XX
+    
 
-- <b>System Description</b> 
+- <b>Open the file that contains the allow list</b> 
 
-The server hardware consists of a powerful CPU processor and 128GB of memory. It runs on the latest version of Linux operating system and hosts a MySQL database management system. It is configured with a stable network connection using IPv4 addresses and interacts with other servers on the network. Security measures include SSL/TLS encrypted connections.
+For the first part of the algorithm, I opened the "allow_list.txt" file. First, I assigned this file name as a string to the import_file variable:
 
-- <b>Scope</b> 
+<img src="https://imgur.com/JowHwSp.png" height="50%" width="50%" alt="Threat And Vulnerability Assessments"/>
 
-The scope of this vulnerability assessment relates to the current access controls of the system. The assessment will cover a period of three months, from June 20XX to August 20XX. NIST SP 800-30 Rev. 1 is used to guide the risk analysis of the information system.
+Then, I used a with statement to open the file:
 
-- <b>Purpose</b>
+<img src="https://imgur.com/o9hHdEl.png" height="70%" width="70%" alt="Threat And Vulnerability Assessments"/>
 
-The database server is a centralized computer system that stores and manages large amounts of data. The server is used to store customer, campaign, and analytic data that can later be analyzed to track performance and personalize marketing efforts. It is critical to secure the system because of its regular use for marketing operations.
-
-- <b>Risk Assessment</b>
-
-<img src="https://imgur.com/SJHK0cI.png" height="80%" width="80%" alt="Threat And Vulnerability Assessments"/>
+In my algorithm, the with statement is used with the .open() function in read mode to open the allow list file for the purpose of reading it. The purpose of opening the file is to allow me to access the IP addresses stored in the allow list file. The with keyword will help manage the resources by closing the file after exiting the with statement. In the code with open(import_file, "r") as file:, the open() function has two parameters. The first identifies the file to import, and then the second indicates what I want to do with the file. In this case, "r" indicates that I want to read it. The code also uses the as keyword to assign a variable named file; file stores the output of the .open() function while I work within the with statement.
 
 
 
-- <b>Approach</b>
+- <b>Read the file contents</b> 
 
-Risks that were measured considered the data storage and management procedures of the business. Potential threat sources and events were determined using the likelihood of a security incident given the open access permissions of the information system. The severity of potential incidents were weighed against the impact on day-to-day operational needs.
+In order to read the file contents, I used the .read() method to convert it into the string.
 
-- <b>Remediation Strategy</b>
+<img src="https://imgur.com/urLPZyj.png" height="90%" width="90%" alt="Threat And Vulnerability Assessments"/>
 
-Implementation of authentication, authorization, and auditing mechanisms to ensure that only authorized users access the database server. This includes using strong passwords, role-based access controls, and multi-factor authentication to limit user privileges. Encryption of data in motion using TLS instead of SSL. IP allow-listing to corporate offices to prevent random users from the internet from connecting to the database.
+When using an .open() function that includes the argument "r" for “read,” I can call the .read() function in the body of the with statement. The .read() method converts the file into a string and allows me to read it. I applied the .read() method to the file variable identified in the with statement. Then, I assigned the string output of this method to the variable ip_addresses. 
+
+In summary, this code reads the contents of the "allow_list.txt" file into a string format that allows me to later use the string to organize and extract data in my Python program.
+
+
+
+- <b>Convert the string into a list</b>
+
+In order to remove individual IP addresses from the allow list, I needed it to be in list format. Therefore, I next used the .split() method to convert the ip_addresses string into a list:
+
+<img src="https://imgur.com/3a2GB0h.png" height="75%" width="75%" alt="Threat And Vulnerability Assessments"/>
+
+The .split() function is called by appending it to a string variable. It works by converting the contents of a string to a list. The purpose of splitting ip_addresses into a list is to make it easier to remove IP addresses from the allow list. By default, the .split() function splits the text by whitespace into list elements. In this algorithm, the .split() function takes the data stored in the variable ip_addresses, which is a string of IP addresses that are each separated by a whitespace, and it converts this string into a list of IP addresses. To store this list, I reassigned it back to the variable ip_addresses. 
+
+
+
+- <b>Iterate through the remove list</b>
+
+A key part of my algorithm involves iterating through the IP addresses that are elements in the remove_list. To do this, I incorporated a for loop:
+
+<img src="https://imgur.com/tzet2xM.png" height="50%" width="50%" alt="Threat And Vulnerability Assessments"/>
+
+The for loop in Python repeats code for a specified sequence. The overall purpose of the for loop in a Python algorithm like this is to apply specific code statements to all elements in a sequence. The for keyword starts the for loop. It is followed by the loop variable element and the keyword in. The keyword in indicates to iterate through the sequence ip_addresses and assign each value to the loop variable element.
+
+
+
+- <b>Remove IP addresses that are on the remove list</b>
+
+My algorithm requires removing any IP address from the allow list, ip_addresses, that is also contained in remove_list.  Because there were not any duplicates in ip_addresses, I was able to use the following code to do this:
+
+<img src="https://imgur.com/1bWIEv6.png" height="80%" width="80%" alt="Threat And Vulnerability Assessments"/>
+
+First, within my for loop, I created a conditional that evaluated whether or not the loop variable element was found in the ip_addresses list. I did this because applying .remove() to elements that were not found in ip_addresses would result in an error. 
+
+Then, within that conditional, I applied .remove() to ip_addresses. I passed in the loop variable element as the argument so that each IP address that was in the remove_list would be removed from ip_addresses.
+
+
+
+- <b>Update the file with the revised list of IP addresses </b>
+
+As a final step in my algorithm, I needed to update the allow list file with the revised list of IP addresses. To do so, I first needed to convert the list back into a string. I used the .join() method for this:
+
+<img src="https://imgur.com/q4RysAG.png" height="90%" width="90%" alt="Threat And Vulnerability Assessments"/>
+
+The .join() method combines all items in an iterable into a string. The .join() method is applied to a string containing characters that will separate the elements in the iterable once joined into a string. In this algorithm, I used the .join() method to create a string from the list ip_addresses so that I could pass it in as an argument to the .write() method when writing to the file "allow_list.txt". I used the string ("\n") as the separator to instruct Python to place each element on a new line. 
+
+Then, I used another with statement and the .write() method to update the file:
+
+<img src="https://imgur.com/1EtMTgw.png" height="70%" width="70%" alt="Threat And Vulnerability Assessments"/>
+
+This time, I used a second argument of "w" with the open() function in my with statement. This argument indicates that I want to open a file to write over its contents. When using this argument "w", I can call the .write() function in the body of the with statement. The .write() function writes string data to a specified file and replaces any existing file content. 
+In this case I wanted to write the updated allow list as a string to the file "allow_list.txt". This way, the restricted content will no longer be accessible to any IP addresses that were removed from the allow list. To rewrite the file, I appended the .write() function to the file object file that I identified in the with statement. I passed in the ip_addresses variable as the argument to specify that the contents of the file specified in the with statement should be replaced with the data in this variable.
+
+
+
+
+
+
+
 
