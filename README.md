@@ -20,7 +20,8 @@ At my organization, access to restricted content is controlled with an allow lis
 
 <h2>Program walk-through:</h2>
 - <b>Update a file through a Python algorithm</b>
-   
+
+
     
 
 - <b>Open the file that contains the allow list</b> 
@@ -37,6 +38,7 @@ In my algorithm, the with statement is used with the .open() function in read mo
 
 
 
+
 - <b>Read the file contents</b> 
 
 In order to read the file contents, I used the .read() method to convert it into the string.
@@ -46,6 +48,7 @@ In order to read the file contents, I used the .read() method to convert it into
 When using an .open() function that includes the argument "r" for “read,” I can call the .read() function in the body of the with statement. The .read() method converts the file into a string and allows me to read it. I applied the .read() method to the file variable identified in the with statement. Then, I assigned the string output of this method to the variable ip_addresses. 
 
 In summary, this code reads the contents of the "allow_list.txt" file into a string format that allows me to later use the string to organize and extract data in my Python program.
+
 
 
 
@@ -59,6 +62,7 @@ The .split() function is called by appending it to a string variable. It works b
 
 
 
+
 - <b>Iterate through the remove list</b>
 
 A key part of my algorithm involves iterating through the IP addresses that are elements in the remove_list. To do this, I incorporated a for loop:
@@ -66,6 +70,7 @@ A key part of my algorithm involves iterating through the IP addresses that are 
 <img src="https://imgur.com/tzet2xM.png" height="50%" width="50%" alt="Threat And Vulnerability Assessments"/>
 
 The for loop in Python repeats code for a specified sequence. The overall purpose of the for loop in a Python algorithm like this is to apply specific code statements to all elements in a sequence. The for keyword starts the for loop. It is followed by the loop variable element and the keyword in. The keyword in indicates to iterate through the sequence ip_addresses and assign each value to the loop variable element.
+
 
 
 
@@ -78,6 +83,7 @@ My algorithm requires removing any IP address from the allow list, ip_addresses,
 First, within my for loop, I created a conditional that evaluated whether or not the loop variable element was found in the ip_addresses list. I did this because applying .remove() to elements that were not found in ip_addresses would result in an error. 
 
 Then, within that conditional, I applied .remove() to ip_addresses. I passed in the loop variable element as the argument so that each IP address that was in the remove_list would be removed from ip_addresses.
+
 
 
 
@@ -98,6 +104,23 @@ In this case I wanted to write the updated allow list as a string to the file "a
 
 
 
+
+<h2> Summary</h2>
+ 
+I created an algorithm that removes IP addresses identified in a remove_list variable from the "allow_list.txt" file of approved IP addresses. This algorithm involved opening the file, converting it to a string to be read, and then converting this string to a list stored in the variable ip_addresses. I then iterated through the IP addresses in remove_list. With each iteration, I evaluated if the element was part of the ip_addresses list. If it was, I applied the .remove() method to it to remove the element from ip_addresses.. After this, I used the .join() method to convert the ip_addresses back into a string so that I could write over the contents of the "allow_list.txt" file with the revised list of IP addresses.
+
+
+
+
+<!--
+ ```diff
+- text in red
++ text in green
+! text in orange
+# text in gray
+@@ text in purple (and bold)@@
+```
+--!>
 
 
 
